@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Alternative_Unit extends Model
 {
     protected $fillable=[
-        
-
+    'id'
     ];
     
     use HasFactory;
