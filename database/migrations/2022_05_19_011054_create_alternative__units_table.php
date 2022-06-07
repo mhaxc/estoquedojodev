@@ -14,7 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('alternative__units', function (Blueprint $table) {
-            $table->id();
+           
+            $table->double('qtd');
+            $table->char('divide_or_multiply',1);
+            $table->integer('bulk_slug');
+             $table->integer('product_id');
+            $table->foreign('products')->references('id')->on('product');
+            $table->foreign('bulks_slug')->references('id')->on('bulks');
             $table->timestamps();
         });
     }
