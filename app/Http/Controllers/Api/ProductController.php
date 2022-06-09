@@ -4,17 +4,22 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(Product $product)
+    {
+        $this->product = $product;
+
+
+    }
+
     public function index()
     {
-        //
+        $products = Product::all();
+        
+        return response()->json($products);
     }
 
     /**
@@ -34,9 +39,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return $product;
+     
     }
 
     /**

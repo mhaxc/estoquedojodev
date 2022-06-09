@@ -8,10 +8,20 @@ use App\Models\Alternative;
 
 class AlternativeController extends Controller
 {
+    private $alternative;
+
+    public function __construct(Alternative $store)
+    {
+        $this->alternative = $alternative;
+
+
+    }
    
     public function index()
     {
-        return Alternative::all();  
+        $alternatives = $this->alternative->paginate(10);
+        
+        return response()->json($alternatives);
     }
 
 
