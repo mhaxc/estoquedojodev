@@ -9,6 +9,7 @@ use App\Models\Category;
 class CategoryController extends Controller
 {
     private $category;
+   
     public function __construct(Category $category)
     {
         $this->category = $category;
@@ -30,7 +31,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categories = Category::create($request->all());
+
+        return response()->json($categories, 201);
     }
 
     /**
@@ -39,9 +42,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Category $categories)
     {
-        
+        return $categories;
     }
 
     /**
@@ -51,9 +54,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $categories)
     {
-        //
+         $categories->update($request->all());
+
+        return response()->json($categories,200);
     }
 
     /**
@@ -62,8 +67,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($category)
     {
-        //
+        $categories->delete();
+        return response()->json($categories,null,204);
     }
 }

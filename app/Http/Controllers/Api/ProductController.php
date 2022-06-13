@@ -8,10 +8,11 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+    private $product;
+
     public function __construct(Product $product)
     {
         $this->product = $product;
-
 
     }
 
@@ -19,7 +20,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
         
-        return response()->json($products);
+        return response()->json($products); 
     }
 
     /**
@@ -30,7 +31,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $products = Product::create($request->all());
+
+        return response()->json($products, 201);
     }
 
     /**
@@ -39,9 +42,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Product $products)
     {
-        return $product;
+        return $products;
      
     }
 
@@ -52,9 +55,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Product $products)
     {
-        //
+        $products->update($request->all());
+
+        return response()->json($products, 200);
     }
 
     /**
@@ -63,8 +68,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $products)
+    
     {
-        //
+        $products->delete();
+        return response()->json(null, 204);
     }
 }

@@ -15,11 +15,11 @@ class Product extends Model
     
     public function Categories()
 {
-    return $this->hasMany(Category::class);
+    return $this->hasMany(Category::class,'category_id');
 }
   public function Bulks()
 {
-    return $this->hasMany(Bulk::class);
+    return $this->hasMany(Bulk::class,'bulks_slug');
 }
     
 }
