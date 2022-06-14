@@ -15,7 +15,7 @@ class Order_items extends Model
     
     public function Products()
     {
-       return $this->hasMany(Product::class); 
+       return $this->belongsToMany(Product::class,'product_id'); 
 
     }
    

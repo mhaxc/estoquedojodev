@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('order_items', function (Blueprint $table) {
-            $table->id();
+            $table->id('seq');
             $table->double('qtd');
             $table->double('value');
             $table->double('discount');
             $table->double('perc_discount');
+            //chaves  strangeiras
             $table->integer('order_id');
             $table->integer('product_id');
             $table->foreign('order_id')->references('id')->on('orders');

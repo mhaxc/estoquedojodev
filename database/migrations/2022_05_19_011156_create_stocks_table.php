@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id');
-            $table->integer('stock_location_id');
             $table->double('qtd');
             $table->string('lote');
             //chaves  strangeiras
+            $table->integer('product_id');
+            $table->integer('stock_location_id');
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('stock_location_id')->references('id')->on('locations');
             $table->timestamps();

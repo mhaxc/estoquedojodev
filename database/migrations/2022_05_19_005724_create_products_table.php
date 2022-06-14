@@ -23,6 +23,7 @@ return new class extends Migration
             $table->double('height');
             $table->double('width');
             $table->double('depth');
+             //chaves  strangeiras
             $table->integer('category_id');
             $table->integer('bulks_slug');
             $table->foreign('category_id')->references('id')->on('categories');

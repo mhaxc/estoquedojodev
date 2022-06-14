@@ -15,7 +15,7 @@ class Product extends Model
     
     public function Categories()
 {
-    return $this->hasMany(Category::class,'category_id');
+    return $this->belongsToMany(Category::class,'category_id');
 }
   public function Bulks()
 {

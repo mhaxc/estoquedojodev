@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('alternative__units', function (Blueprint $table) {
            
             $table->double('qtd');
-            $table->char('divide_or_multiply',1);
+            $table->char('divide_or_multiply');
+            //chaves estrangeiras
             $table->integer('bulk_slug');
-             $table->integer('product_id');
-            $table->foreign('products')->references('id')->on('product');
-            $table->foreign('bulks_slug')->references('id')->on('bulks');
+            $table->integer('product_id');
+            $table->foreign('product_id')->references('id')->on('product');
+            $table->foreign('bulk_slug')->references('bulk')->on('slug');
             $table->timestamps();
         });
     }

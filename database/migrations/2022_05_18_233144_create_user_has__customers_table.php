@@ -14,6 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('user_has__customers', function (Blueprint $table) {
+           
+           //chaves  strangeiras
             $table->integer('user_id');
             $table->integer('customer_id');
             $table->foreign('user_id')->references('id')->on('users');
