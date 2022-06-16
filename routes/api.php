@@ -26,68 +26,45 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('bulks',[BulkController::class,'index']);
-Route::get('bulks/{slug}',[BulkController::class,'show']);
-Route::post('bulks',[BulkController::class,'store']);
-Route::put('bulks/{slug}',[BulkController::class,'update']);
-Route::delete('bulks/{slug}',[BulkController::class,'delete']);
+
+Route::apiResource('bulks',\App\Http\Controllers\Api\BulkController::class);
+
+
 
 // produtos
-Route::get('products',[ProductController::class,'index']);
-Route::get('products/{id}',[ProductController::class,'show']);
-Route::post('products',[ProductController::class,'store']);
-Route::put('products/{id}',[ProductController::class,'update']);
-Route::delete('products/{id}',[ProductController::class,'delete']);
+Route::apiResource('products',\App\Http\Controllers\Api\ProductController::class);
+
 
 //categorias
-Route::get('categories',[CategoryController::class,'index']);
-Route::get('categories/{id}',[CategoryController::class,'show']);
-Route::post('categories',[CategoryController::class,'store']);
-Route::put('categories/{id}',[CategoryController::class,'update']);
-Route::delete('categories/{id}',[CategoryController::class,'delete']);
+
+Route::apiResource('categories',\App\Http\Controllers\Api\CategoryController::class);
+
 
 //customers
-Route::get('customers',[CustomerController::class,'index']);
-Route::get('customers/{id}',[CustomerController::class,'show']);
-Route::post('customers',[CustomerController::class,'store']);
-Route::put('customers/{id}',[CustomerController::class,'update']);
-Route::delete('customers/{id}',[CustomerController::class,'delete']);
+Route::apiResource('customers',\App\Http\Controllers\Api\CustomerController::class);
 
 //orders_items
-Route::get('orders_items',[Order_itemController::class,'index']);
-Route::get('orders_items/{seq}',[Order_itemController::class,'show']);
-Route::post('orders_items',[Order_itemController::class,'store']);
-Route::put('orders_items/{seq}',[Order_itemController::class,'update']);
-Route::delete('orders_items/{seq}',[Order_itemController::class,'delete']);
+Route::apiResource('orders_items',\App\Http\Controllers\Api\Order_itemController::class);
+
 
 //orders
-Route::get('orders',[OrderController::class,'index']);
-Route::get('orders/{id}',[OrderController::class,'show']);
-Route::post('orders',[OrderController::class,'store']);
-Route::put('orders/{id}',[OrderController::class,'update']);
-Route::delete('orders/{id}',[OrderController::class,'delete']);
+Route::apiResource('orders',\App\Http\Controllers\Api\OrderController::class);
+
 
 //stocks_locations
-Route::get('stockslocations',[Stock_LocationController::class,'index']);
-Route::get('stocklocations/{id}',[Stock_LocationController::class,'show']);
-Route::post('stocklocations',[Stock_LocationController::class,'store']);
-Route::put('stocklocations/{id}',[Stock_LocationController::class,'update']);
-Route::delete('stocklocations/{id}',[Stock_LocationController::class,'delete']);
+Route::apiResource('stockslocations',\App\Http\Controllers\Api\Stock_LocationController::class);
 
 
 //stocks
-//Route::get('stocks',[StockController::class,'index']);
+
+//Route::apiResource('stocks',\App\Http\Controllers\Api\StockController::class);
+
 
 //users
-Route::get('users',[UserController::class,'index']);
-Route::get('users/{id}',[UserController::class,'show']);
-Route::post('users',[UserController::class,'store']);
-Route::put('users/{id}',[UserController::class,'update']);
-Route::delete('users/{id}',[UserController::class,'delete']);
+Route::apiResource('users',\App\Http\Controllers\Api\UserController::class);
+
+
 
 //type_payments
-Route::get('type',[TypeController::class,'index']);
-Route::get('type/{id}',[TypeController::class,'show']);
-Route::post('type',[TypeController::class,'store']);
-Route::put('type/{id}',[TypeController::class,'update']);
-Route::delete('type/{id}',[TypeController::class,'delete']);
+Route::apiResource('type',\App\Http\Controllers\Api\TypeController::class);
+
