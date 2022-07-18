@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\bulk;
 
 class BulkController extends Controller
 {
 
     public function index()
     {
-        //
+        return Bulk::all();
     }
 
     /**
@@ -21,7 +22,7 @@ class BulkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Bulk::create($request->all());
     }
 
     /**
@@ -31,8 +32,9 @@ class BulkController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    { 
+      return Bulk::findOrdfail($id);
+    
     }
 
     /**
@@ -44,7 +46,8 @@ class BulkController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $bulk = Bulk::findOrdfail($id);
+        $bulk->update($request->all());
     }
 
     /**
@@ -55,6 +58,8 @@ class BulkController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $bulk = Bulk::findOrdfail($id);
+        
+         $bulk=Bulk::delete();
     }
 }

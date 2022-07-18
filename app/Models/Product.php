@@ -19,7 +19,7 @@ class Product extends Model
 }
   public function Bulks()
 {
-    return $this->hasMany(Bulk::class,'bulks_slug');
+    return $this->belongsToMany(Bulk::class,'bulks_slug');
 }
     
 }

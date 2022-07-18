@@ -29,11 +29,14 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $products = Product::create($request->all());
 
-        return response()->json($products, 201);
+        return response()->json([
+        'message' => "Product saved successfully!",
+        'product' => $products
+        ], 200);
     }
 
     /**
@@ -42,9 +45,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $products)
+    public function show($id)
     {
-        return $products;
+        $products = Product::find($id);
+        return response()->json($products);
      
     }
 
@@ -55,12 +59,16 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Product $products)
+    public function update(ProductRequest $request,Product $products)
     {
         $products->update($request->all());
 
-        return response()->json($products, 200);
+    return response()->json([
+        'message' => "Product updated successfully!",
+        'product' => $products
+    ], 200);
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -72,6 +80,9 @@ class ProductController extends Controller
     
     {
         $products->delete();
-        return response()->json(null, 204);
+
+        return response()->json([
+        'message' => "Product deleted successfully!",
+    ], 200);
     }
 }

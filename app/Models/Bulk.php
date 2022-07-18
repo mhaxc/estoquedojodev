@@ -9,5 +9,20 @@ class Bulk extends Model
 {
     protected $fillable =['slug','name'];
 
-    use HasFactory;
+
+
+
+     public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+     public function alternativeunit()
+    {
+        return $this->hasMany(AlternativeUnit::class);
+    }
+
+
+
+     use HasFactory;
 }

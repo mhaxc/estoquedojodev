@@ -14,7 +14,6 @@ class AlternativeController extends Controller
     {
         $this->alternative = $alternative;
 
-
     }
    
     public function index()
